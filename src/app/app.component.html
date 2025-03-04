@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "HHR.ai",
+      "url": "https://www.hhr.ai",
+      "logo": "https://www.hhr.ai/assets/logo.png",
+      "description": "Refresca tu marca con HHR.ai. Recibe correos diarios, un diagnóstico gratuito y acceso a productos exclusivos.",
+      "sameAs": [
+        "https://www.facebook.com/HHR.ai",
+        "https://www.instagram.com/HHR.ai"
+      ]
+    }
+  </script>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page - Refresca tu Marca con HHR.ai</title>
+  <meta name="description" content="Refresca tu marca con HHR.ai. Recibe correos diarios, un diagnóstico gratuito y acceso a productos exclusivos. ¡Regístrate hoy!">
+  <meta name="keywords" content="marca personal, marketing, fidelización de clientes, HHR.ai">
+  <meta name="author" content="HHR.ai">
+
+  <!-- Open Graph for social media -->
+  <meta property="og:title" content="Refresca tu Marca con HHR.ai">
+  <meta property="og:description" content="Recibe correos diarios, un diagnóstico gratuito y acceso a productos exclusivos. ¡Regístrate hoy!">
+  <meta property="og:image" content="assets/logo.png">
+  <meta property="og:url" content="https://www.hhr.ai">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Refresca tu Marca con HHR.ai">
+  <meta name="twitter:description" content="Recibe correos diarios, un diagnóstico gratuito y acceso a productos exclusivos. ¡Regístrate hoy!">
+  <meta name="twitter:image" content="assets/logo.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Avenir:wght@400;500;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+</head>
+<body>
+<div class="container">
+  <h1>Web oficial</h1>
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo de HHR" loading="lazy">
+  </div>
+  <p>Amo refrescar marcas, envío correos diarios que pueden servirte a mejorar tu imagen de marca, fidelizar o atraer nuevos clientes.</p>
+  <p class="highlight">Regístrate hoy y recibe:</p>
+  <p>- 1 diagnóstico gratuito de tu marca (solo por febrero 2025).</p>
+  <p>- Mail diario en tu bandeja de entrada.</p>
+  <p>- Acceso a productos exclusivos.</p>
+
+  <div class="signup-box">
+    <input type="text" [(ngModel)]="name" placeholder="NOMBRE" aria-label="Nombre">
+
+    <input
+      type="email"
+      [(ngModel)]="email"
+      placeholder="TU EMAIL"
+      aria-label="Email"
+      required
+      [class.invalid]="hasBlurred && !isEmailValid"
+      (input)="validateEmail()"
+      (blur)="hasBlurred = true"
+    >
+
+    <button
+      (click)="submitForm()"
+      [disabled]="!isEmailValid"
+    >
+      GO!
+    </button>
+  </div>
+
+</div>
+</body>
+</html>
