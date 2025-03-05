@@ -14,7 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  apiUrl = 'https://script.google.com/macros/s/AKfycbwTE0BWwlCTkk54mXx1-735wZHnrpABli-STRs_CNDqMKgriylz6iqtoOVNzNhd3j5C/exec';
+  apiUrl = 'https://script.google.com/macros/s/AKfycbwogk8RY-xAA3gOXX1fEIoiO6S3eUO3-Cd5q-E-roF7ADNuqlpf2Zpw5ee8fgXQ5zFV/exec';
   email: string = '';
   name: string = '';
   isEmailValid: boolean = false;
