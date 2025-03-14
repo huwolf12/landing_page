@@ -28,8 +28,17 @@ jobs:
         run: ls -la
 
       - name: Build Angular App
-        run: npx ng build --configuration production --output-path dist/hugo-frontend --base-href /landing_page/
+        run: npx ng build --configuration production
 
+      - name: Verify Build Output
+        run: |
+          if [ -d "dist/hugo-frontend" ]; then
+            echo "✅ Build successful! Contents of dist/hugo-frontend:"
+            ls -la dist/hugo-frontend
+          else
+            echo "❌ Build failed or dist/hugo-frontend does not exist."
+            exit 1
+          fi
       - name: Check build output
         run: ls -la dist/hugo-frontend || echo "Build folder not found!"
 
