@@ -42,10 +42,14 @@ jobs:
       - name: Check build output
         run: ls -la dist/hugo-frontend || echo "Build folder not found!"
 
+      - name: Move files to root
+        run: |
+          mv dist/hugo-frontend/browser/* dist/hugo-frontend/
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/hugo-frontend/browser
+          publish_dir: ./dist/hugo-frontend
           publish_branch: gh-pages
           enable_jekyll: false
