@@ -30,16 +30,11 @@ jobs:
       - name: Debug Build Output
         run: ls -la dist/
 
-
-      - name: Prepare Files for Deployment
-        run: |
-          mkdir -p dist/hugo-frontend-deploy
-          cp -r dist/hugo-frontend/browser/. dist/hugo-frontend-deploy/
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/hugo-frontend-deploy
+          publish_dir: ./dist/hugo-frontend
           publish_branch: gh-pages
           enable_jekyll: false
+
