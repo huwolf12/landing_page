@@ -24,32 +24,21 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Check repo structure before build
-        run: ls -la
-
       - name: Build Angular App
-        run: npx ng build --configuration production
+        run: npx ng build --configuration production --base-href /landing_page/
 
       - name: Verify Build Output
-        run: |
-          if [ -d "dist/hugo-frontend" ]; then
-            echo "✅ Build successful! Contents of dist/hugo-frontend:"
-            ls -la dist/hugo-frontend
-          else
-            echo "❌ Build failed or dist/hugo-frontend does not exist."
-            exit 1
-          fi
-      - name: Check build output
-        run: ls -la dist/hugo-frontend || echo "Build folder not found!"
+        run: ls -la dist/hugo-frontend/browser
 
-      - name: Move files to root
+      - name: Prepare Files for Deployment
         run: |
-          mv dist/hugo-frontend/browser/* dist/hugo-frontend/
+          mkdir -p dist/hugo-frontend-deploy
+          cp -r dist/hugo-frontend/browser/* dist/hugo-frontend-deploy/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/hugo-frontend
+          publish_dir: ./dist/hugo-frontend-deploy
           publish_branch: gh-pages
           enable_jekyll: false
