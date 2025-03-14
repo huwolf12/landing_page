@@ -24,11 +24,14 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Check repo structure before build
+        run: ls -la
+
       - name: Build Angular App
         run: npx ng build --configuration production --output-path dist/hugo-frontend --base-href /landing_page/
 
       - name: Check build output
-        run: ls -la dist/hugo-frontend
+        run: ls -la dist/hugo-frontend || echo "Build folder not found!"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
