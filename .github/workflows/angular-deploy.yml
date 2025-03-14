@@ -27,13 +27,14 @@ jobs:
       - name: Build Angular App
         run: npx ng build --configuration production --base-href /landing_page/
 
-      - name: Verify Build Output
-        run: ls -la dist/hugo-frontend/browser
+      - name: Debug Build Output
+        run: ls -la dist/
+
 
       - name: Prepare Files for Deployment
         run: |
           mkdir -p dist/hugo-frontend-deploy
-          cp -r dist/hugo-frontend/browser/* dist/hugo-frontend-deploy/
+          cp -r dist/hugo-frontend/browser/. dist/hugo-frontend-deploy/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
